@@ -4,6 +4,10 @@
   "description": "Sample MEAN stack application for display and and creation of plain text articles.",
   "main": "app.js",
   "scripts": {
+    "postinstall": "cd article-app-ui && npm install && cd .. && npm run build",
+    "serve": "concurrently --kill-others \"node app\" \"cd article-app-ui && ng serve\"",
+    "build": "cd article-app-ui && node --max-old-space-size=8192 ./node_modules/@angular/cli/bin/ng build --aot --prod --output-hashing=none --vendor-chunk=true --source-map=false",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
