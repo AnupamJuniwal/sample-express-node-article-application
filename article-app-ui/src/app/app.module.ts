@@ -7,7 +7,7 @@ import { SearchComponent } from './search/search.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { HomeComponent } from './home/home.component';
 import { OpenArticleComponent } from './open-article/open-article.component';
-import {RouterModule, Routes} from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,24 +21,7 @@ import {RouterModule, Routes} from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot([
-      {
-        path: '/home',
-        component: HomeComponent
-      },
-      {
-        path: '/search',
-        component: SearchComponent
-      },
-      {
-        path: '/view:articleId',
-        component: OpenArticleComponent
-      },
-      {
-        path: '/add',
-        component: AddArticleComponent
-      }
-    ])
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,59 @@
+.main {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    background: rgb(240, 240, 240);
+    height: 100%;
+    /* WebKit-based browsers will ignore this. */
+    height: -moz-available;
+    /* Mozilla-based browsers will ignore this. */
+    height: -webkit-fill-available;
+    width: 100%;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 50px;
+}
+
+.finder {
+    z-index: 100;
+    border-left: 3px solid #bd1111 !important;
+    position: absolute;
+    top: 60px;
+    width: 300px;
+    background: rgba(230, 230, 230, 0.95);
+    height: 89%;
+    padding: 10px;
+}
+
+.navbar-custom {
+    background-color: #bd1111 !important;
+    z-index: 99;
+    position: fixed !important;
+    box-shadow: 0 0 10px black;
+    width: 100%;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    height: 50px;
+    max-height: 50px;
+    left: 0;
+    top: 0;
+}
+
+.navbar-custom>ul {
+    position: absolute;
+    right: 1rem;
+}
+
+.navbar-custom>ul>li {
+    color: white;
+}
+
+.navbar-custom>ul>li :visited {
+    color: white;
+}
+
+.navbar-custom>ul>li :hover {
+    color: rgb(228, 228, 228);
+}

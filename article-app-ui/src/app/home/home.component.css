@@ -1,0 +1,36 @@
+.container {
+    display: block;
+    min-height: 89%;
+    max-width: 1000px;
+    margin: 20px;
+    left: auto;
+    right: auto;
+    align-self: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+}
+
+.container>.title {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+    background: #001b46;
+    height: 30px;
+    font-size: 18px;
+    color: white;
+    padding-top: 12px;
+    text-align: center;
+}
+
+.container>.content {
+    display: block;
+    top: 50px;
+    left: 0;
+    max-width: 100%;
+    font-size: 15px;
+    color: black;
+    text-align: justify;
+    padding: 15px;
+}
