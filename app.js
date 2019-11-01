@@ -8,7 +8,7 @@ const { getMongoInstance } = require('./mongo-connection');
 const logger = getLogger();
 getMongoInstance();
 
-app.use('/home', express.static('./article-app-ui/dest/article-app-ui'));
+app.use('/', express.static('./article-app-ui/dist/article-app-ui'));
 
 app.use(function (req, resp, next) {
     req.getMongoConnection = getMongoInstance;

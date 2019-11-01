@@ -17,6 +17,8 @@ import {
   MatIconModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ArticleService } from './article.service';
 
 
 @NgModule({
@@ -26,7 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddArticleComponent,
     HomeComponent,
     OpenArticleComponent,
-    
+
 
   ],
   imports: [
@@ -40,7 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatChipsModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     MatButtonModule,
@@ -48,9 +51,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatRippleModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ArticleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

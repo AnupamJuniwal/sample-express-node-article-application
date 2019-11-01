@@ -2,15 +2,24 @@
     <div class="title">Add Article</div>
     <div class="form-container">
         <mat-form-field>
-            <input matInput placeholder="Title" [formControl]="formCtrl.controls['title']">
+            <input matInput placeholder="*Title" [formControl]="formCtrl.controls['title']" [errorStateMatcher]="errorMatcher">
+            <mat-error *ngIf="formCtrl.controls['title'].errors">
+                {{getFirstError('title')}}
+              </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="Publisher Name" [formControl]="formCtrl.controls['publisher']">
+            <input matInput placeholder="*Publisher Name" [formControl]="formCtrl.controls['publisher']" [errorStateMatcher]="errorMatcher">
+            <mat-error *ngIf="formCtrl.controls['publisher'].errors">
+                {{getFirstError('publisher')}}
+              </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <textarea matInput placeholder="Type your content here" rows="20" [formControl]="formCtrl.controls['content']"></textarea>
+            <textarea matInput placeholder="*Type your content here" rows="20" [formControl]="formCtrl.controls['content']" [errorStateMatcher]="errorMatcher"></textarea>
+            <mat-error *ngIf="formCtrl.controls['content'].errors">
+                {{getFirstError('content')}}
+              </mat-error>
         </mat-form-field>
 
         <mat-form-field>

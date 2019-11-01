@@ -46,7 +46,7 @@ articleRouter.get('/search', function (req, resp) {
 
 
 // get one
-articleRouter.get('/get/:articleId', function () {
+articleRouter.get('/get/:articleId', function (req, resp) {
     handler.getArticleById(req.params.articleId, function (err, data) {
         if (err) {
             logger.error("Error Occured while fetching single article {}", err);
@@ -65,7 +65,7 @@ articleRouter.get('/get/:articleId', function () {
 })
 
 // add
-articleRouter.post('/add', function () {
+articleRouter.post('/add', function (req, resp) {
     handler.createArticle(req.body, function (err, data) {
         if (err) {
             logger.error("Error Occured while adding article {}", err);
