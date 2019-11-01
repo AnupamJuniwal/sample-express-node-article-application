@@ -1,0 +1,27 @@
+.search-tool {
+    display: flex;
+}
+
+.search-result {
+    display: block;
+    overflow-y: auto;
+    max-height: 87% !important;
+    margin-bottom: 10px;
+    width: 277px;
+    overflow-x: hidden;
+    position: absolute;
+}
+
+.result {
+    list-style: none;
+    display: block;
+    max-height: 40px;
+    font-size: 15px;
+    width: 85% !important;
+    border-radius: 4px;
+    box-shadow: 0 0 10px white;
+    padding: 5px;
+    margin-left: auto;
+    color: white;
+    margin-right: auto;
+}

@@ -2,7 +2,7 @@
     position: absolute !important;
     top: 0;
     left: 0;
-    background: rgb(240, 240, 240);
+    background: rgb(48, 48, 48);
     height: 100%;
     /* WebKit-based browsers will ignore this. */
     height: -moz-available;
@@ -17,18 +17,21 @@
 }
 
 .finder {
+    right: 0;
     z-index: 100;
-    border-left: 3px solid #bd1111 !important;
+    border-left: 3px solid #e91e63 !important;
     position: absolute;
-    top: 60px;
+    top: 50px;
     width: 300px;
-    background: rgba(230, 230, 230, 0.95);
-    height: 89%;
+    background: rgba(48, 48, 48, 0.95);
+    height: 100%;
+    height: -webkit-fill-available;
+    height: -moz-available;
     padding: 10px;
 }
 
 .navbar-custom {
-    background-color: #bd1111 !important;
+    background-color: #e91e63 !important;
     z-index: 99;
     position: fixed !important;
     box-shadow: 0 0 10px black;

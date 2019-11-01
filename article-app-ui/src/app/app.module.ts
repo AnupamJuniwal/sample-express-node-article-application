@@ -8,6 +8,12 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { HomeComponent } from './home/home.component';
 import { OpenArticleComponent } from './open-article/open-article.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRippleModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -15,13 +21,23 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     SearchComponent,
     AddArticleComponent,
     HomeComponent,
-    OpenArticleComponent,
+    OpenArticleComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRippleModule
+  ],
+  exports:[
+    MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,10 +7,12 @@ import {trigger, state, style, transition, animate} from '@angular/animations';
   animations: [
     trigger('finderState', [
       state('inactive', style({
-        'right': '-55em',
+        'z-index': '-1',
+        'opacity': '0'
       })),
       state('active',   style({
-        'right': '0px',
+        'z-index': '98',
+        'opacity': '1'
       })),
       transition('inactive => active', animate('300ms ease-in')),
       transition('active => inactive', animate('300ms ease-out'))
