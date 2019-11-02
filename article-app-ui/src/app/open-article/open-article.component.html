@@ -2,14 +2,18 @@
     <div class="title">{{data.title}}</div>
     <div class="details">
         <div class="votes">
-            <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="UpVote"></mat-icon>
+            <a aria-label="UpVote">
+                <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="UpVote" (click)="upVote($event)"></mat-icon>
+            </a>
             <span>{{data.up_votes}}</span>
         </div>
         <div class="created-on">{{data.created_on.substr(0,10)}}</div>
         <div class="publisher">{{data.publisher}}</div>
         <div class="votes">
             <span>{{data.down_votes}}</span>
-            <mat-icon svgIcon="thumbs-down" aria-hidden="false" aria-label="DownVote"></mat-icon>
+            <a aria-label="DownVote">
+                <mat-icon svgIcon="thumbs-down" aria-hidden="false" aria-label="DownVote" (click)="downVote($event)"></mat-icon>
+            </a>
         </div>
     </div>
     <div class="content" [innerHTML]="data.content">
@@ -28,7 +32,7 @@
     </div>
 </div>
 
-<div class="container">
+<div *ngIf="loading" class="container">
     <div class="title">Loading</div>
     <div class="loading">
         <mat-spinner></mat-spinner>
