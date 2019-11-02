@@ -54,9 +54,9 @@ export class AddArticleComponent implements OnInit {
       input.value = '';
     }
 
-    // Add our fruit
+    // Add tag
     if ((value || '').trim()) {
-      value = value.trim();
+      value = value.trim().toLowerCase();
       if (!this.tags.includes(value))
         this.tags.push(value);
     }

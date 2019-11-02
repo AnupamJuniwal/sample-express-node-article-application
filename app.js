@@ -20,7 +20,7 @@ app.use(function(req, resp, next) {
 
 app.use(bodyParser.json());
 
-app.get('/home', function(req, resp) {
+app.use('/home', function(req, resp) {
     resp.sendFile(__dirname + '/article-app-ui/dist/article-app-ui/index.html');
 });
 

@@ -3,16 +3,16 @@
         <a class="navbar-brand " href="#">
             <img src="/assets/logo.png" width="30" height="30" alt=""> Article Library Application
         </a>
-        
+
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link " [routerLink]="[{ outlets: { main: ['home']}} ]">Home</a>
+                <a class="nav-link " [routerLink]="['/']">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="[{ outlets: { main: ['add']}} ]">Add Article</a>
+                <a class="nav-link" [routerLink]="['/',{ outlets: { main: ['add']}} ]">Add Article</a>
             </li>
             <li class='nav-item' (click)="toggleState()">
-                <a class="nav-link" [routerLink]="[{ outlets: { finder: ['search']}} ]" tabindex="-1" aria-disabled="true">Search</a>
+                <a class="nav-link" [routerLink]="['/',{ outlets: { finder: ['search']}} ]" tabindex="-1" aria-disabled="true">Search</a>
             </li>
         </ul>
     </nav>

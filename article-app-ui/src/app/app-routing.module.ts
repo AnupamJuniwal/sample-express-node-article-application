@@ -6,9 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { OpenArticleComponent } from './open-article/open-article.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/(main:home)', pathMatch: 'full' },
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
     outlet: 'main'
   },

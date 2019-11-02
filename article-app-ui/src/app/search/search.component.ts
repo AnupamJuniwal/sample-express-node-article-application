@@ -24,7 +24,8 @@ export class SearchComponent implements OnInit {
   }
 
   search(searchItem: string) {
-    const tags = searchItem.split(/(\s)/g).filter(tag => tag.trim().length > 0);
+    const tags = searchItem.toLowerCase().split(/(\s)/g).filter(tag => tag.trim().length > 0);
+    
     if (tags.length > 0) {
       this.err = null;
       this.loading = true;

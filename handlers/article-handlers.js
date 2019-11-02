@@ -1,11 +1,15 @@
 const Article = require('../models/articles');
-
+const { TAGS_MAX_LEN } = require('../constants')
 const createArticle = function(data, cb) {
-    try {
-        const artcl = new Article(data);
-        artcl.save(cb);
-    } catch (err) {
-        cb(err);
+    if (data && data.tags && data.tags.length <= TAGS_MAX_LEN) {
+        try {
+            const artcl = new Article(data);
+            artcl.save(cb);
+        } catch (err) {
+            cb(err);
+        }
+    } else {
+        cb(new Error("Unexpected data!"));
     }
 }
 
@@ -14,12 +18,12 @@ const getArticleById = function(id, cb) {
 }
 
 const findArticle = function(tags, cb) {
-    if (Array.isArray(tags)) {
+    if (Array.isArray(tags) && tags.length <= TAGS_MAX_LEN) {
         Article.find({ tags: tags }, cb)
             .sort({ up_votes: -1, created_on: -1, down_votes: 1 })
             .select("_id title created_on up_votes");
     } else {
-        cb(new Error("Expecting array but got ".concat(typeof tags)));
+        cb(new Error("Unexpected search tags!"));
     }
 }
 
