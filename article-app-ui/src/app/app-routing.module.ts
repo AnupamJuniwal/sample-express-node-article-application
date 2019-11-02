@@ -18,7 +18,7 @@ const routes: Routes = [
     outlet: 'finder'
   },
   {
-    path: 'view:articleId',
+    path: 'view/:articleId',
     component: OpenArticleComponent,
     outlet: 'main'
   },

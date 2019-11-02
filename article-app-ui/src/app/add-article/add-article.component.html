@@ -5,38 +5,36 @@
             <input matInput placeholder="*Title" [formControl]="formCtrl.controls['title']" [errorStateMatcher]="errorMatcher">
             <mat-error *ngIf="formCtrl.controls['title'].errors">
                 {{getFirstError('title')}}
-              </mat-error>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <input matInput placeholder="*Publisher Name" [formControl]="formCtrl.controls['publisher']" [errorStateMatcher]="errorMatcher">
             <mat-error *ngIf="formCtrl.controls['publisher'].errors">
                 {{getFirstError('publisher')}}
-              </mat-error>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <textarea matInput placeholder="*Type your content here" rows="20" [formControl]="formCtrl.controls['content']" [errorStateMatcher]="errorMatcher"></textarea>
             <mat-error *ngIf="formCtrl.controls['content'].errors">
                 {{getFirstError('content')}}
-              </mat-error>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <mat-chip-list #chipList aria-label="Tags">
-                <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
-                    (removed)="remove(tag)">
+                <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)">
                     {{tag}}
                     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                 </mat-chip>
-                <input placeholder="Add tags..." [matChipInputFor]="chipList"
-                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-                    (matChipInputTokenEnd)="add($event)">
+                <input placeholder="Add tags..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
             </mat-chip-list>
         </mat-form-field>
         <div class="form-button-container">
             <button mat-raised-button>Cancel</button>
             <button mat-raised-button (click)="post()">Post</button>
+            <mat-spinner *ngIf="loading"></mat-spinner>
         </div>
     </div>
 </div>

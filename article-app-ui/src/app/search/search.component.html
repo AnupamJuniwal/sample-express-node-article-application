@@ -9,58 +9,14 @@
             <button mat-raised-button (click)="listAll()">List All</button>
         </div>
     </div>
-    <div class="search-result">
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
-        </ul>
-        <ul class="result">
-            <li>title1</li>
-            <li>created on: 1/1/19</li>
+    <div *ngIf="err" class="search-error">
+        {{err}}
+    </div>
+
+    <div *ngIf="dataSet" class="search-result">
+        <ul *ngFor="let result of dataSet" class="result" [routerLink]="['/', { outlets: { main: ['view', result._id]}} ]">
+            <li><b>Title:</b> {{result.title}}</li>
+            <li><b>Created on:</b> {{result.created_on}}</li>
         </ul>
     </div>
 

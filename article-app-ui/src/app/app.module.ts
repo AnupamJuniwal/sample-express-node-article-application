@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { AddArticleComponent } from './add-article/add-article.component';
+import { AddArticleComponent, BottomSheetResponse } from './add-article/add-article.component';
 import { HomeComponent } from './home/home.component';
 import { OpenArticleComponent } from './open-article/open-article.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +19,10 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticleService } from './article.service';
-
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule as MaterialIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,7 @@ import { ArticleService } from './article.service';
     AddArticleComponent,
     HomeComponent,
     OpenArticleComponent,
-
+    BottomSheetResponse,
 
   ],
   imports: [
@@ -43,7 +46,11 @@ import { ArticleService } from './article.service';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatBottomSheetModule,
+    MatProgressSpinnerModule,
+    MatListModule,
+    MaterialIconModule
   ],
   exports: [
     MatButtonModule,
@@ -52,11 +59,18 @@ import { ArticleService } from './article.service';
     MatRippleModule,
     MatChipsModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatBottomSheetModule,
+    MatProgressSpinnerModule,
+    MatListModule,
+    MaterialIconModule
   ],
   providers: [
     ArticleService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    BottomSheetResponse
+  ]
 })
 export class AppModule { }

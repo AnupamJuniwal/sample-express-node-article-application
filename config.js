@@ -41,11 +41,11 @@ module.exports = {
             append_on_stdout: true
         },
         db: {
-            username: "admin",
-            password: "Demo123",
-            host: "ds141198.mlab.com",
-            port: 41198,
-            db: "article-demo-app",
+            username: "test",
+            password: "test123",
+            host: "ds237848.mlab.com",
+            port: 37848,
+            db: "test-db-server",
             options: {
                 useNewUrlParser: true
             },

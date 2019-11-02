@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ErrorStateMatcher } from '@angular/material';
 import { ArticleService } from '../article.service';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+
 @Component({
   selector: 'app-add-article',
   templateUrl: './add-article.component.html',
@@ -20,7 +22,11 @@ export class AddArticleComponent implements OnInit {
   formCtrl: FormGroup;
   errorMatcher = new ErrorStateMatcher();
 
-  constructor(private httpArticleService: ArticleService) { }
+  loading = false;
+
+
+  constructor(private httpArticleService: ArticleService,
+    private _bottomSheet: MatBottomSheet) { }
 
   ngOnInit() {
     this.formCtrl = new FormGroup({
@@ -65,18 +71,6 @@ export class AddArticleComponent implements OnInit {
     }
   }
 
-  post() {
-    const dataToBeSent = {
-      title: this.formCtrl.value['content'],
-      publisher: this.formCtrl.value['publisher'],
-      content: this.formatContent(this.formCtrl.value['content']),
-      tags: this.tags
-    }
-    console.log(dataToBeSent);
-    
-    this.httpArticleService.postNewArticle(dataToBeSent).subscribe( result => console.log(result));
-  }
-
   formatContent(content: string) {
     return "<p>".concat(content.replace(/\n/g, "</p><p>")).concat("</p>");
   }
@@ -94,5 +88,58 @@ export class AddArticleComponent implements OnInit {
         msg = "";
     }
     return msg;
+  }
+
+  post() {
+    const dataToBeSent = {
+      title: this.formCtrl.value['title'],
+      publisher: this.formCtrl.value['publisher'],
+      content: this.formatContent(this.formCtrl.value['content']),
+      tags: this.tags
+    }
+
+    this.httpArticleService.postNewArticle(dataToBeSent).subscribe(result => {
+      let resp = {};
+      if (!result['success']) {
+        resp['title'] = "Error Occured!";
+        resp['body'] = result['error'];
+        resp['type'] = 'error'
+      } else {
+        resp['title'] = "Success!";
+        resp['body'] = "Here's the ID of this article: ".concat(result['data']._id);
+        resp['type'] = 'info'
+      }
+      this._bottomSheet.open(BottomSheetResponse).instance.setResponse(resp);
+      this.loading = false;
+    });
+  }
+}
+
+
+
+@Component({
+  template: `
+  <div *ngIf="responseObject">
+    <mat-nav-list >
+      <div mat-list-item class="{{responseObject.type}}">
+        <span mat-line class="title">{{responseObject.title}}</span>
+        <span mat-line class="body">{{responseObject.body}}</span>
+      </div>
+      <button mat-raised-button (click)="close($event)">Close</button>
+  </mat-nav-list>
+</div>`,
+styleUrls: ['./add-article.component.css']
+})
+export class BottomSheetResponse {
+  responseObject: any;
+  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetResponse>) { }
+
+  close(event: MouseEvent): void {
+    this._bottomSheetRef.dismiss();
+    event.preventDefault();
+  }
+  public setResponse(data) {
+    console.log("data set!")
+    this.responseObject = data;
   }
 }

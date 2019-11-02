@@ -1,5 +1,6 @@
 .search-tool {
     display: flex;
+    color: white;
 }
 
 .search-result {
@@ -8,6 +9,19 @@
     max-height: 87% !important;
     margin-bottom: 10px;
     width: 277px;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    position: absolute;
+}
+
+.search-error {
+    display: block;
+    overflow-y: auto;
+    color: red;
+    max-height: 87% !important;
+    margin-bottom: 10px;
+    width: 277px;
+    overflow-wrap: break-word;
     overflow-x: hidden;
     position: absolute;
 }
@@ -15,12 +29,14 @@
 .result {
     list-style: none;
     display: block;
-    max-height: 40px;
+    max-height: 90px;
     font-size: 15px;
     width: 85% !important;
+    max-width: 85% !important;
     border-radius: 4px;
     box-shadow: 0 0 10px white;
     padding: 5px;
+    overflow-wrap: break-word;
     margin-left: auto;
     color: white;
     margin-right: auto;

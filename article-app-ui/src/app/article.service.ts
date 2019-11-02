@@ -10,8 +10,17 @@ export class ArticleService {
   options = {headers: this.headers};
   constructor(private http: HttpClient) { }
 
-  getRoot() {
-    return this.http.get("/", this.options);
+  getAll() {
+    return this.http.get("/articles/", this.options);
+  }
+
+  getByID(id: string) {
+    return this.http.get("/articles/get/".concat(id), this.options);
+  }
+
+
+  find(tags = []) {
+    return this.http.post("/articles/search", {tags: tags},this.options);
   }
 
   postNewArticle(data){

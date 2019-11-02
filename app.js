@@ -10,20 +10,21 @@ getMongoInstance();
 
 app.use('/', express.static('./article-app-ui/dist/article-app-ui'));
 
-app.use(function (req, resp, next) {
+app.use(function(req, resp, next) {
     req.getMongoConnection = getMongoInstance;
     req.getLogger = getLogger;
     next();
 })
 
 
+
 app.use(bodyParser.json());
 
-app.get('/home', function (req, resp) {
+app.get('/home', function(req, resp) {
     resp.sendFile(__dirname + '/article-app-ui/dist/article-app-ui/index.html');
 });
 
-app.get('/', function(req,resp){
+app.get('/', function(req, resp) {
     resp.redirect('/home')
 })
 
@@ -33,7 +34,17 @@ app.use('/articles', article_router);
 //     res.send("Hello")
 // })
 
-app.listen(config.SERVER_PORT, function (err) {
+// error handler
+app.use(function(err, req, res, next) {
+    getLogger().error("Unknown Exception Occured {}", err);
+    res.json({
+        success: false,
+        error: err.message
+    })
+})
+
+
+app.listen(config.SERVER_PORT, function(err) {
     if (err) {
         logger.error("Error while starting up application, {}", err)
     } else {

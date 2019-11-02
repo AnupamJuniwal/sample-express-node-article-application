@@ -1,1 +1,36 @@
-<p>open-article works!</p>
+<div *ngIf="data" class="container">
+    <div class="title">{{data.title}}</div>
+    <div class="details">
+        <div class="votes">
+            <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="UpVote"></mat-icon>
+            <span>{{data.up_votes}}</span>
+        </div>
+        <div class="created-on">{{data.created_on.substr(0,10)}}</div>
+        <div class="publisher">{{data.publisher}}</div>
+        <div class="votes">
+            <span>{{data.down_votes}}</span>
+            <mat-icon svgIcon="thumbs-down" aria-hidden="false" aria-label="DownVote"></mat-icon>
+        </div>
+    </div>
+    <div class="content" [innerHTML]="data.content">
+    </div>
+    <div class="tags">
+        <label>Tags:</label>
+        <mat-chip-list aria-label="tags">
+            <mat-chip color="primary" selected *ngFor="let tag of data.tags">{{tag}}</mat-chip>
+        </mat-chip-list>
+    </div>
+</div>
+<div *ngIf="err" class="container err">
+    <div class="title">Error</div>
+    <div class="content">
+        {{err}}
+    </div>
+</div>
+
+<div class="container">
+    <div class="title">Loading</div>
+    <div class="loading">
+        <mat-spinner></mat-spinner>
+    </div>
+</div>
